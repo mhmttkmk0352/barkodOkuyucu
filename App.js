@@ -12,34 +12,40 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-  console.log( {RNCamera} );
+
   }
 
   render(){
     return(
       <View style={styles.container}>
-        <RNCamera
-          style={styles.preview}
-          type={RNCamera.Constants.Type.back}
-          flashMode={RNCamera.Constants.FlashMode.on}
-          captureAudio={false}
-          androidCameraPermissionOptions={{
-            title: 'Kamera izni gerekiyor',
-            message: 'Kamera ile manzara fotoğrafı çekmek için izin vermeniz gerekiyor.',
-            buttonPositive: 'Tamam',
-            buttonNegative: 'İptal'
-          }}
-          androidRecordAudioPermissionOptions={{
-            title: 'Mikrofon izni gerekiyor',
-            message: 'Mikrofon ile ses kaydı yapmak için için izin vermeniz gerekiyor.',
-            buttonPositive: 'Tamam',
-            buttonNegative: 'İptal'
-          }}
-          onGoogleVisionBarcodesDetected={({barcodes}) => {
-            console.log(barcodes);
-            alert( barcodes );
-          }}
-        />
+        <View style={styles.header}>
+          <RNCamera
+            style={styles.preview}
+            type={RNCamera.Constants.Type.back}
+            flashMode={RNCamera.Constants.FlashMode.on}
+            captureAudio={false}
+            androidCameraPermissionOptions={{
+              title: 'Kamera izni gerekiyor',
+              message: 'Kamera ile manzara fotoğrafı çekmek için izin vermeniz gerekiyor.',
+              buttonPositive: 'Tamam',
+              buttonNegative: 'İptal'
+            }}
+            androidRecordAudioPermissionOptions={{
+              title: 'Mikrofon izni gerekiyor',
+              message: 'Mikrofon ile ses kaydı yapmak için için izin vermeniz gerekiyor.',
+              buttonPositive: 'Tamam',
+              buttonNegative: 'İptal'
+            }}
+            onGoogleVisionBarcodesDetected={({barcodes}) => {
+              console.log(barcodes);
+              alert( barcodes[0].data );
+              j
+            }}
+          />
+        </View>
+        <View style={styles.footer}>
+
+        </View>
       </View>
     )
   }
@@ -48,6 +54,13 @@ class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  header: {
+    flex:3
+  },
+  footer:{
+    flex:2,
+    backgroundColor:"yellow"
   },
   preview: {
     flex: 1,
